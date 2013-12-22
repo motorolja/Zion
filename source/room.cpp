@@ -4,8 +4,8 @@ Room::Room(std::string& name, std::string description)
   : m_name(name), m_description(description)
 {
   // maybe initiate a tile with pos (0,0)
-  Position pos; // is (0,0) if not initiated with any values 
-  m_tiles.push_back(pos);
+  tile t(pos); // is (0,0) if not initiated with any values 
+  m_tiles.push_back(t);
 }
 
 Room::~Room()
