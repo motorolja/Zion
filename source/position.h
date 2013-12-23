@@ -5,19 +5,20 @@ class Position
 {
  public:
   // if not initiated (0,0)
- Position(int x = 0, int y = 0) : m_x(x), m_y(y)
-  {}
+  Position(int _x = 0, int _y = 0);
   ~Position();
-
-  /*
-    may need some operators for addition and substraction
-   */
-
- private:
-  // m stands for member
-  int m_x;
-  int m_y;
-
+ 
+  Position operator+(Position&); // addition of Position from Position
+  Position operator-(Position&); // subtraction of Position from Position
+  
+  // comperation operators
+  bool operator==(const Position&) const;
+  bool operator< (const Position&) const;
+  bool operator> (const Position&) const;
+  
+  // public members
+  int x; 
+  int y;
 };
 
 #endif

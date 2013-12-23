@@ -3,7 +3,7 @@
 
 #include "position.h"
 #include "tile.h"
-#include <vector>
+#include <map>
 
 class Room
 {
@@ -19,14 +19,14 @@ class Room
   bool addTile(Position); // adds a tile in the room if true
   bool removeTile(Position); // removes a tile in the room if true
   void clearRoom(); // empties the room
-  std::vector<Tile> getTiles() const; // returns all the tiles
+  std::map<Position,Tile> getTiles() const; // returns all the tiles
   bool empty(); // returns true if the room has no tiles
 
 
  private:
   std::string m_name;
   std::string m_description;
-  std::vector<Tile> m_tiles;
+  std::map<Position,Tile> m_tiles;
 };
 
 #endif

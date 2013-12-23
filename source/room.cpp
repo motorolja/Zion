@@ -23,12 +23,22 @@ std::string Room::getDescription() const
 
 bool Room::addTile(Position pos)
 {
-  return true;
+  if( m_tiles.find(pos) == std::map::end() )
+    {
+      m_tiles[pos];
+      return true;
+    }
+  return false;
 }
 
 bool Room::removeTile(Position pos)
 {
-  return true;
+  if( m_tiles.find(pos) != std::map::end() )
+    {
+      m_tiles.erase(pos);
+      return true;
+    }
+  return false;
 }
 
 void Room::clearRoom()
@@ -36,7 +46,7 @@ void Room::clearRoom()
   m_tiles.clear();
 }
 
-std::vector<Tile> Room::getTiles() const
+std::map<Position,Tile> Room::getTiles() const
 {
   return m_tiles;
 }
