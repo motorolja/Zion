@@ -31,6 +31,15 @@ bool Item::addProperty(eProperty property)
   return false;
 }
 
+bool Item::operator==(const Item* item) const
+{
+  if( item->getName() == m_name &&
+      item->getDescription() == m_description && 
+      item->hasQuantity() == m_has_quantity )
+    return true;
+  return false;
+}
+
 Unique_Item* Unique_Item::clone() const
 {
   return (new Unique_Item(*this) );

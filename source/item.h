@@ -24,6 +24,7 @@ class Item
     : m_name(name), m_description(description), m_has_quantity(has_quantity)
   {}
   Item(const Item&) = default; 
+  bool operator==(const Item*) const; // compares the item name and description
 
  private:
   Item& operator=(const Item&) = delete;
