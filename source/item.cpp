@@ -1,12 +1,12 @@
 #include "item.h"
 #include <algorithm>
 
-std::string Item::getName() const
+const std::string Item::getName() const
 {
   return m_name;
 }
 
-std::string Item::getDescription() const
+const std::string Item::getDescription() const
 {
   return m_description;
 }
@@ -16,14 +16,24 @@ std::vector<eProperty> Item::getProperties() const
   return m_properties;
 }
 
+bool Item::hasQuantity() const
+{
+  return m_has_quantity;
+}
+
 bool Item::addProperty(eProperty property)
 {
-  if( find( m_properties.cbegin(), m_properties.cend(), property ) == std::vector::end() )
+  if( std::find( m_properties.cbegin(), m_properties.cend(), property ) == m_properties.end() )
     {
       m_properties.push_back(property);
       return true;
     }
   return false;
+}
+
+Unique_Item* Unique_Item::clone() const
+{
+  return (new Unique_Item(*this) );
 }
 
 int Not_Unique_Item::getQuantity() const
@@ -49,4 +59,9 @@ void Not_Unique_Item::decreaseQuantity(int quantity)
       if( m_quantity < 0 )
 	m_quantity = 0;
     }
+}
+
+Not_Unique_Item* Not_Unique_Item::clone() const
+{
+  return (new Not_Unique_Item(*this) );
 }
