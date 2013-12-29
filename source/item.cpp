@@ -1,15 +1,6 @@
 #include "item.h"
 #include <algorithm>
 
-Item::Item(std::string& name, std::string& description)
-  : m_name(name), m_description(description)
-{
-
-}
-
-Item::~Item()
-{}
-
 std::string Item::getName() const
 {
   return m_name;
@@ -33,4 +24,29 @@ bool Item::addProperty(eProperty property)
       return true;
     }
   return false;
+}
+
+int Not_Unique_Item::getQuantity() const
+{
+  return m_quantity;
+}
+
+void Not_Unique_Item::addQuantity(int quantity)
+{
+  if( m_quantity != 99 ) 
+    {
+      m_quantity += quantity;
+      if( m_quantity > 99 )
+	m_quantity = 99;
+    }
+}
+
+void Not_Unique_Item::decreaseQuantity(int quantity)
+{
+  if( m_quantity != 0 )
+    {
+      m_quantity -= quantity;
+      if( m_quantity < 0 )
+	m_quantity = 0;
+    }
 }
