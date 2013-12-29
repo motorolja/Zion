@@ -11,7 +11,12 @@ Player::Player(int health, Position pos)
 
 Player::~Player()
 {
-
+  while( !m_inventory.empty() )
+    {
+      auto temp = m_inventory.front();
+      m_inventory.erase( my_inventory.begin() );
+      delete temp;
+    }
 }
 
 void Player::setHealth(int health)
