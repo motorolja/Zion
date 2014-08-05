@@ -1,6 +1,5 @@
 #include <algorithm>
 #include <stdexcept>
-#include <typeinfo>
 #include "player.h"
 
 Player::Player(int health, Position pos)
@@ -85,7 +84,7 @@ void Player::addItem(Item* item)
 	}
       else
 	{
-	  throw std::out_of_range("Player::addItem(): Can't add a unique item that allready exists");
+	  throw std::out_of_range("Player::addItem(): Can't add a unique item that already exists");
 	}
     }
   else
